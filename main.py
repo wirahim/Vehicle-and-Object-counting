@@ -7,7 +7,8 @@ cnt_up=0
 cnt_down=0
 
 
-cap=cv2.VideoCapture("surveillance.m4v")
+cap=cv2.VideoCapture("sample_road.mp4")
+# cap=cv2.VideoCapture("Freeway.m4v")
 
 #Get width and height of video
 
@@ -51,7 +52,7 @@ fgbg=cv2.createBackgroundSubtractorMOG2(detectShadows=True)
 #Kernals
 kernalOp = np.ones((3,3),np.uint8)
 kernalOp2 = np.ones((5,5),np.uint8)
-kernalCl = np.ones((11,11),np.uint)
+kernalCl = np.ones((11,11),np.uint8)
 
 
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -82,7 +83,7 @@ while(cap.isOpened()):
 
 
         #Find Contours
-        _, countours0,hierarchy=cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
+        countours0,hierarchy=cv2.findContours(mask,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
         for cnt in countours0:
             area=cv2.contourArea(cnt)
             print(area)
